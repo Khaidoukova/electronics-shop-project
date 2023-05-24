@@ -28,14 +28,14 @@ class Item:
 
     @name.setter
     def name(self, new_name: str):
-        try:
-            if len(new_name) <= 10:
-                self.__name = new_name
-        except:
-            raise AttributeError("Длина названия больше 10 символов")
+        if len(new_name) <= 10:
+            self.__name = new_name
+        else:
+            raise Exception("Длина названия больше 10 символов")
+
 
     @classmethod
-    def instantiate_from_csv(cls):
+    def instantiate_from_csv(cls) -> None:
         """Инициализируем экземпляры класса данными из файла"""
         cls.all.clear()
         with open('../src/items.csv', newline="") as csv_file:

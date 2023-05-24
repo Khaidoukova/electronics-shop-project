@@ -17,12 +17,9 @@ def test_apply_discount():
     assert item1.price == expected
 
 def test_instantiate_from_csv():
-    Item.all = []
-    with open("../tests/items.csv", newline="") as file:
-        reader = csv.DictReader(file)
-        for line in reader:
-            Item.all.append(line)
-    assert Item.all[0] == {'name': 'Smartphone', 'price': '100', 'quantity': '1'}
+    Item.instantiate_from_csv()
+    item1 = Item.all[0]
+    assert item1.name == 'Smartphone'
     assert len(Item.all) == 5
 
 
