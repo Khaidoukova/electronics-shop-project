@@ -12,15 +12,17 @@ class Item:
     def __init__(self, name: str, price: float, quantity: int):
         """
         Создание экземпляра класса item.
-
-        :param name: Название товара.
-        :param price: Цена за единицу товара.
-        :param quantity: Количество товара в магазине.
         """
         self.__name = name
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+    def __str__(self) -> str:
+        return f"{self.name}"
 
     @property
     def name(self):
@@ -42,7 +44,6 @@ class Item:
             reader = csv.DictReader(csv_file)
             for line in reader:
                 cls(line["name"], line["price"], line["quantity"])
-
 
     @staticmethod
     def string_to_number(line):
