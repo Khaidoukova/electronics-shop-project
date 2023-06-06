@@ -2,35 +2,30 @@ from src.item import Item
 
 
 class LanguageMixin:
-    def __init__(self):
-        self.__language = "EN"
-    def change_lang(self):
-        if self.language == "RU":
-            self.language = "EN"
-        elif self.language == "EN":
-            self.language = "RU"
 
+    __lang = "EN"
 
-
-class Keyboard(Item, LanguageMixin):
-    def __init__(self, name, price, quantity, language="EN"):
-        super().__init__(name, price, quantity)
-        self.language = language
+    #def __init__(self, name, price, quantity):
+     #   super().__init__(name, price, quantity)
+     #   self.__language = self.lang
 
     @property
     def language(self):
-        return self.__language
+        return self.__lang
 
-    @language.setter
-    def
+    def change_lang(self):
+        if self.__lang == "EN":
+            self.__lang = "RU"
+            return self
+        else:
+            self.__lang = "EN"
+            return self
+
+
+class Keyboard(LanguageMixin, Item):
+    def __init__(self, name: str, price: float, quantity: int):
+        super().__init__(name, price, quantity)
 
 
 
-
-
-
-#kb = Keyboard('Dark Project KD87A', 9600, 5)
-#print(kb)
-#kb.change_lang()
-#print(kb.language)
 
