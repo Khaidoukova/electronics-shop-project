@@ -1,6 +1,7 @@
 import pytest
 from src.keyboard import Keyboard
 
+
 def test_change_lang():
     keyboard1 = Keyboard("Defender", 500, 20)
     assert str(keyboard1.name) == "Defender"
